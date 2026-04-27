@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Qui est-ce ? — Éléments Chimiques</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===================== ÉCRAN ACCUEIL ===================== -->
+  <div id="screen-home" class="screen active">
+    <div class="home-container">
+      <div class="logo-area">
+        <div class="logo-icon">⚗️</div>
+        <h1 class="game-title">Qui est-ce ?</h1>
+        <p class="game-subtitle">Le jeu des éléments chimiques</p>
+        <div class="periodic-decoration">
+          <span class="deco-element" style="--c:#e74c3c">H<small>1</small></span>
+          <span class="deco-element" style="--c:#3498db">He<small>2</small></span>
+          <span class="deco-element" style="--c:#2ecc71">Au<small>79</small></span>
+          <span class="deco-element" style="--c:#9b59b6">Fe<small>26</small></span>
+          <span class="deco-element" style="--c:#f39c12">O<small>8</small></span>
+        </div>
+      </div>
+      <div class="home-buttons">
+        <button class="btn btn-primary btn-large" onclick="showScreen('screen-host')">
+          🏠 Héberger une partie
+        </button>
+        <button class="btn btn-secondary btn-large" onclick="showScreen('screen-join')">
+          🔗 Rejoindre une partie
+        </button>
+      </div>
+      <p class="home-footer">2 joueurs • Questions Oui/Non • Tableau périodique</p>
+    </div>
+  </div>
+
+  <!-- ===================== ÉCRAN HÉBERGER ===================== -->
+  <div id="screen-host" class="screen">
+    <div class="panel">
+      <button class="btn-back" onclick="showScreen('screen-home')">← Retour</button>
+      <h2>🏠 Créer une partie</h2>
+      <div id="host-form">
+        <div class="form-group">
+          <label for="host-name">Votre pseudo</label>
+          <input type="text" id="host-name" placeholder="Ex: Chimiste42" maxlength="20"/>
+        </div>
+        <button class="btn btn-primary" onclick="hostGame()">Créer la partie</button>
+      </div>
+      <div id="host-waiting" class="hidden">
+        <div class="code-display">
+          <p>Code de la partie :</p>
+          <div class="game-code" id="display-code">----</div>
+          <button class="btn btn-outline btn-small" onclick="copyCode()">📋 Copier</button>
+        </div>
+        <div class="waiting-animation">
+          <div class="spinner"></div>
+          <p>En attente d'un adversaire...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== ÉCRAN REJOINDRE ===================== -->
+  <div id="screen-join" class="screen">
+    <div class="panel">
+      <button class="btn-back" onclick="showScreen('screen-home')">← Retour</button>
+      <h2>🔗 Rejoindre une partie</h2>
+      <div class="form-group">
+        <label for="join-name">Votre pseudo</label>
+        <input type="text" id="join-name" placeholder="Ex: Mendeleiev" maxlength="20"/>
+      </div>
+      <div class="form-group">
+        <label for="join-code">Code de la partie</label>
+        <input type="text" id="join-code" placeholder="Ex: AB12" maxlength="6"
+               style="text-transform:uppercase; letter-spacing:4px; font-size:1.4rem;"/>
+      </div>
+      <button class="btn btn-secondary" onclick="joinGame()">Rejoindre</button>
+      <div id="join-error" class="error-msg hidden"></div>
+    </div>
+  </div>
+
+  <!-- ===================== ÉCRAN CHOIX ÉLÉMENT ===================== -->
+  <div id="screen-choose" class="screen">
+    <div class="choose-container">
+      <div class="choose-header">
+        <h2>🔬 Choisissez votre élément secret</h2>
+        <p id="choose-subtitle">L'adversaire devra deviner cet élément !</p>
+        <div class="category-filters" id="category-filters"></div>
+      </div>
+      <div class="periodic-table-wrapper">
+        <div class="periodic-table" id="choose-table"></div>
+      </div>
+      <div id="choose-selected" class="choose-selected hidden">
+        <p>Élément sélectionné : <strong id="selected-name"></strong></p>
+        <button class="btn btn-primary" onclick="confirmChoice()">✅ Confirmer ce choix</button>
+      </div>
+      <div id="choose-waiting" class="hidden waiting-animation">
+        <div class="spinner"></div>
+        <p>En attente que l'adversaire choisisse son élément...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== ÉCRAN JEU PRINCIPAL ===================== -->
+  <div id="screen-game" class="screen">
+    <div class="game-layout">
+
+      <!-- COLONNE GAUCHE : infos du joueur -->
+      <div class="game-col game-col-left">
+        <div class="my-element-card">
+          <h3>🃏 Mon élément secret</h3>
+          <div class="element-badge" id="my-element-badge"></div>
+          <p class="hint-text">L'adversaire essaie de le deviner</p>
+        </div>
+        <div class="game-log-container">
+          <h3>📜 Historique</h3>
+          <div class="game-log" id="game-log"></div>
+        </div>
+      </div>
+
+      <!-- COLONNE CENTRALE : tableau périodique jouable -->
+      <div class="game-col game-col-center">
+        <div class="game-status-bar">
+          <div class="turn-indicator" id="turn-indicator">⏳ Chargement...</div>
+          <div class="player-scores">
+            <span id="score-p1">—</span>
+            <span class="vs-text">VS</span>
+            <span id="score-p2">—</span>
+          </div>
+        </div>
+        <div class="periodic-table-wrapper game-table-wrapper">
+          <div class="periodic-table" id="game-table"></div>
+        </div>
+        <p class="table-hint">Cliquez sur un élément pour le <strong>coucher</strong> (éliminer)</p>
+      </div>
+
+      <!-- COLONNE DROITE : actions -->
+      <div class="game-col game-col-right">
+
+        <!-- Zone question rapide -->
+        <div class="action-panel" id="panel-ask">
+          <h3>❓ Poser une question</h3>
+          <div class="quick-questions" id="quick-questions"></div>
+          <div class="custom-question-area">
+            <textarea id="custom-question" placeholder="Ou posez votre propre question..."
+                      rows="2" maxlength="120"></textarea>
+            <button class="btn btn-primary btn-small" onclick="sendQuestion()">Envoyer</button>
+          </div>
+          <hr/>
+          <h3>🎯 Faire une proposition</h3>
+          <div class="form-group">
+            <select id="guess-select"></select>
+          </div>
+          <button class="btn btn-accent btn-small" onclick="sendGuess()">Proposer cet élément</button>
+        </div>
+
+        <!-- Zone réponse (adversaire a posé une question) -->
+        <div class="action-panel hidden" id="panel-answer">
+          <h3>📩 Question de l'adversaire</h3>
+          <div class="question-to-answer" id="question-text"></div>
+          <div class="answer-buttons">
+            <button class="btn btn-yes" onclick="sendAnswer(true)">✅ OUI</button>
+            <button class="btn btn-no" onclick="sendAnswer(false)">❌ NON</button>
+          </div>
+        </div>
+
+        <!-- Zone attente -->
+        <div class="action-panel" id="panel-wait">
+          <div class="waiting-animation">
+            <div class="spinner"></div>
+            <p id="wait-message">En attente de l'adversaire...</p>
+          </div>
+        </div>
+
+        <!-- Zone réponse reçue -->
+        <div class="action-panel hidden" id="panel-response">
+          <h3>💬 Réponse reçue</h3>
+          <div class="response-display" id="response-display"></div>
+          <button class="btn btn-primary btn-small" onclick="acknowledgeResponse()">
+            Continuer mon tour →
+          </button>
+        </div>
+
+        <!-- Zone devinette reçue -->
+        <div class="action-panel hidden" id="panel-guess-received">
+          <h3>🎯 L'adversaire propose :</h3>
+          <div class="guess-display" id="guess-display"></div>
+          <div class="answer-buttons">
+            <button class="btn btn-yes" onclick="answerGuess(true)">✅ Correct !</button>
+            <button class="btn btn-no" onclick="answerGuess(false)">❌ Incorrect</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== ÉCRAN FIN ===================== -->
+  <div id="screen-end" class="screen">
+    <div class="end-container">
+      <div id="end-result-icon" class="end-icon"></div>
+      <h2 id="end-title">Partie terminée</h2>
+      <p id="end-subtitle"></p>
+      <div class="end-reveal">
+        <div class="reveal-card">
+          <p>Votre élément</p>
+          <div class="element-badge large" id="end-my-element"></div>
+        </div>
+        <div class="reveal-card">
+          <p>Élément adverse</p>
+          <div class="element-badge large" id="end-opp-element"></div>
+        </div>
+      </div>
+      <div class="end-buttons">
+        <button class="btn btn-primary" onclick="requestRematch()">🔄 Rejouer</button>
+        <button class="btn btn-outline" onclick="showScreen('screen-home')">🏠 Accueil</button>
+      </div>
+      <p id="rematch-status" class="hint-text"></p>
+    </div>
+  </div>
+
+  <!-- ===================== OVERLAY NOTIFICATION ===================== -->
+  <div id="notification" class="notification hidden"></div>
+
+  <!-- ===================== SCRIPTS ===================== -->
+  <!-- Firebase SDK (compat version pour simplicité) -->
+  <script src="https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.12.1/firebase-analytics.js"></script>
+
+  <!-- Données + Logique -->
+  <script src="elements.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="game.js"></script>
+
+</body>
+</html>

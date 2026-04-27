@@ -1,0 +1,363 @@
+/* =============================================================
+   style.css — Design complet du jeu "Qui est-ce ? Chimie"
+   Thème : laboratoire / tableau de bord scientifique
+   ============================================================= */
+
+/* ─── RESET & VARIABLES ──────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-dark:       #0f1117;
+  --bg-panel:      #1a1d2e;
+  --bg-card:       #22263a;
+  --bg-hover:      #2d3250;
+  --accent:        #6c63ff;
+  --accent-2:      #00d4ff;
+  --success:       #2ecc71;
+  --danger:        #e74c3c;
+  --warning:       #f39c12;
+  --text-main:     #e8eaf0;
+  --text-muted:    #8a8fa8;
+  --border:        #2e3250;
+  --radius:        10px;
+  --radius-lg:     16px;
+  --shadow:        0 4px 24px rgba(0,0,0,0.5);
+  --tile-size:     52px;
+  --tile-gap:      3px;
+  --font-main:     'Segoe UI', system-ui, sans-serif;
+}
+
+html, body {
+  height: 100%;
+  font-family: var(--font-main);
+  background: var(--bg-dark);
+  color: var(--text-main);
+  overflow-x: hidden;
+}
+
+/* ─── ÉCRANS ──────────────────────────────────────────────────── */
+.screen {
+  display: none;
+  min-height: 100vh;
+  width: 100%;
+  animation: fadeIn 0.3s ease;
+}
+
+.screen.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── UTILITAIRES ─────────────────────────────────────────────── */
+.hidden { display: none !important; }
+
+/* ─── BOUTONS ─────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+.btn-primary:hover:not(:disabled) {
+  background: #7c74ff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(108,99,255,0.4);
+}
+
+.btn-secondary {
+  background: var(--accent-2);
+  color: #000;
+}
+.btn-secondary:hover:not(:disabled) {
+  background: #33ddff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,212,255,0.4);
+}
+
+.btn-accent {
+  background: var(--warning);
+  color: #000;
+}
+.btn-accent:hover:not(:disabled) {
+  background: #f5a623;
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+}
+.btn-outline:hover:not(:disabled) {
+  background: var(--accent);
+  color: #fff;
+}
+
+.btn-large {
+  padding: 18px 40px;
+  font-size: 1.15rem;
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 320px;
+}
+
+.btn-small {
+  padding: 8px 18px;
+  font-size: 0.9rem;
+}
+
+.btn-yes {
+  background: var(--success);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  flex: 1;
+  transition: all 0.2s;
+}
+.btn-yes:hover { background: #27ae60; transform: translateY(-2px); }
+
+.btn-no {
+  background: var(--danger);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  flex: 1;
+  transition: all 0.2s;
+}
+.btn-no:hover { background: #c0392b; transform: translateY(-2px); }
+
+.btn-back {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.95rem;
+  padding: 4px 0;
+  margin-bottom: 16px;
+  display: inline-block;
+  transition: color 0.2s;
+}
+.btn-back:hover { color: var(--text-main); }
+
+/* ─── FORMULAIRES ─────────────────────────────────────────────── */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+input[type="text"],
+textarea,
+select {
+  background: var(--bg-dark);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-main);
+  font-size: 1rem;
+  padding: 10px 14px;
+  transition: border-color 0.2s;
+  font-family: var(--font-main);
+  width: 100%;
+}
+
+input[type="text"]:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+select option {
+  background: var(--bg-panel);
+}
+
+.error-msg {
+  background: rgba(231,76,60,0.15);
+  border: 1px solid var(--danger);
+  border-radius: var(--radius);
+  color: var(--danger);
+  padding: 10px 14px;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+/* ─── PANNEAU GÉNÉRIQUE ───────────────────────────────────────── */
+.panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: var(--shadow);
+}
+
+.panel h2 {
+  font-size: 1.4rem;
+  margin-bottom: 24px;
+  color: var(--text-main);
+}
+
+/* ─── ÉCRAN ACCUEIL ───────────────────────────────────────────── */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+}
+
+.logo-area { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+
+.logo-icon { font-size: 4rem; animation: float 3s ease-in-out infinite; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+
+.game-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+}
+
+.game-subtitle {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+}
+
+.periodic-decoration {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.deco-element {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--c, #555);
+  color: #fff;
+  width: 52px;
+  height: 52px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  animation: popIn 0.5s ease backwards;
+}
+
+.deco-element small {
+  font-size: 0.65rem;
+  font-weight: 400;
+  opacity: 0.85;
+}
+
+.deco-element:nth-child(1) { animation-delay: 0.1s; }
+.deco-element:nth-child(2) { animation-delay: 0.2s; }
+.deco-element:nth-child(3) { animation-delay: 0.3s; }
+.deco-element:nth-child(4) { animation-delay: 0.4s; }
+.deco-element:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.5) rotate(-10deg); }
+  to   { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+.home-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  align-items: center;
+}
+
+.home-footer {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* ─── CODE PARTIE ─────────────────────────────────────────────── */
+.code-display {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.code-display p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.game-code {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: 12px;
+  color: var(--accent-2);
+  background: var(--bg-dark);
+  border: 2px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 12px 
