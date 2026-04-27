@@ -224,24 +224,22 @@
   <div id="notification" class="notification hidden"></div>
 
   <!-- ===================== SCRIPTS ===================== -->
-  // Attendez que Firebase soit prêt
-  import { db } from './firebase-config.js';
-
-  // Vérifiez que Firebase est initialisé
-  if (db) {
-      const jeu = new JeuQuiEstCe();
-  } else {
-      console.error('Firebase n\'est pas prêt');
-  }
-
-  <!-- Firebase SDK (compat version pour simplicité) -->
-  <script src="https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/12.12.1/firebase-analytics.js"></script>
+    <!-- ===================== SCRIPTS ===================== -->
+  <!-- Firebase SDK + Database (version compat) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
 
   <!-- Données + Logique -->
   <script src="elements.js"></script>
   <script src="firebase-config.js"></script>
   <script src="game.js"></script>
+
+  <!-- Attendre que Firebase soit prêt -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('Firebase chargé et prêt');
+    });
+  </script>
 
 </body>
 </html>
