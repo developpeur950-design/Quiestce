@@ -25,6 +25,7 @@ const ELEMENTS = [
   // Période 1
   { number:1,  symbol:"H",  name:"Hydrogène",    mass:1.008,   category:"nonmetal",        state:"gas",    period:1, group:1,  radioactive:false, metallic:false, row:1,  col:1  },
   { number:2,  symbol:"He", name:"Hélium",        mass:4.003,   category:"noble",           state:"gas",    period:1, group:18, radioactive:false, metallic:false, row:1,  col:18 },
+  
   // Période 2
   { number:3,  symbol:"Li", name:"Lithium",       mass:6.941,   category:"alkali",          state:"solid",  period:2, group:1,  radioactive:false, metallic:true,  row:2,  col:1  },
   { number:4,  symbol:"Be", name:"Béryllium",     mass:9.012,   category:"alkaline-earth",  state:"solid",  period:2, group:2,  radioactive:false, metallic:true,  row:2,  col:2  },
@@ -34,6 +35,7 @@ const ELEMENTS = [
   { number:8,  symbol:"O",  name:"Oxygène",       mass:15.999,  category:"nonmetal",        state:"gas",    period:2, group:16, radioactive:false, metallic:false, row:2,  col:16 },
   { number:9,  symbol:"F",  name:"Fluor",         mass:18.998,  category:"halogen",         state:"gas",    period:2, group:17, radioactive:false, metallic:false, row:2,  col:17 },
   { number:10, symbol:"Ne", name:"Néon",          mass:20.180,  category:"noble",           state:"gas",    period:2, group:18, radioactive:false, metallic:false, row:2,  col:18 },
+  
   // Période 3
   { number:11, symbol:"Na", name:"Sodium",        mass:22.990,  category:"alkali",          state:"solid",  period:3, group:1,  radioactive:false, metallic:true,  row:3,  col:1  },
   { number:12, symbol:"Mg", name:"Magnésium",     mass:24.305,  category:"alkaline-earth",  state:"solid",  period:3, group:2,  radioactive:false, metallic:true,  row:3,  col:2  },
@@ -43,6 +45,7 @@ const ELEMENTS = [
   { number:16, symbol:"S",  name:"Soufre",        mass:32.065,  category:"nonmetal",        state:"solid",  period:3, group:16, radioactive:false, metallic:false, row:3,  col:16 },
   { number:17, symbol:"Cl", name:"Chlore",        mass:35.453,  category:"halogen",         state:"gas",    period:3, group:17, radioactive:false, metallic:false, row:3,  col:17 },
   { number:18, symbol:"Ar", name:"Argon",         mass:39.948,  category:"noble",           state:"gas",    period:3, group:18, radioactive:false, metallic:false, row:3,  col:18 },
+  
   // Période 4
   { number:19, symbol:"K",  name:"Potassium",     mass:39.098,  category:"alkali",          state:"solid",  period:4, group:1,  radioactive:false, metallic:true,  row:4,  col:1  },
   { number:20, symbol:"Ca", name:"Calcium",       mass:40.078,  category:"alkaline-earth",  state:"solid",  period:4, group:2,  radioactive:false, metallic:true,  row:4,  col:2  },
@@ -55,98 +58,101 @@ const ELEMENTS = [
   { number:27, symbol:"Co", name:"Cobalt",        mass:58.933,  category:"transition",      state:"solid",  period:4, group:9,  radioactive:false, metallic:true,  row:4,  col:9  },
   { number:28, symbol:"Ni", name:"Nickel",        mass:58.693,  category:"transition",      state:"solid",  period:4, group:10, radioactive:false, metallic:true,  row:4,  col:10 },
   { number:29, symbol:"Cu", name:"Cuivre",        mass:63.546,  category:"transition",      state:"solid",  period:4, group:11, radioactive:false, metallic:true,  row:4,  col:11 },
-  { number:30, symbol:"Zn", name:"Zinc",          mass:65.38,   category:"transition",      state:"solid",  period:4, group:12, radioactive:false, metallic:true,  row:4,  col:12 },
+  { number:30, symbol:"Zn", name:"Zinc",          mass:65.380,  category:"transition",      state:"solid",  period:4, group:12, radioactive:false, metallic:true,  row:4,  col:12 },
   { number:31, symbol:"Ga", name:"Gallium",       mass:69.723,  category:"post-transition", state:"solid",  period:4, group:13, radioactive:false, metallic:true,  row:4,  col:13 },
-  { number:32, symbol:"Ge", name:"Germanium",     mass:72.631,  category:"metalloid",       state:"solid",  period:4, group:14, radioactive:false, metallic:false, row:4,  col:14 },
+  { number:32, symbol:"Ge", name:"Germanium",     mass:72.640,  category:"metalloid",       state:"solid",  period:4, group:14, radioactive:false, metallic:false, row:4,  col:14 },
   { number:33, symbol:"As", name:"Arsenic",       mass:74.922,  category:"metalloid",       state:"solid",  period:4, group:15, radioactive:false, metallic:false, row:4,  col:15 },
-  { number:34, symbol:"Se", name:"Sélénium",      mass:78.971,  category:"nonmetal",        state:"solid",  period:4, group:16, radioactive:false, metallic:false, row:4,  col:16 },
+  { number:34, symbol:"Se", name:"Sélénium",      mass:78.960,  category:"nonmetal",        state:"solid",  period:4, group:16, radioactive:false, metallic:false, row:4,  col:16 },
   { number:35, symbol:"Br", name:"Brome",         mass:79.904,  category:"halogen",         state:"liquid", period:4, group:17, radioactive:false, metallic:false, row:4,  col:17 },
   { number:36, symbol:"Kr", name:"Krypton",       mass:83.798,  category:"noble",           state:"gas",    period:4, group:18, radioactive:false, metallic:false, row:4,  col:18 },
+  
   // Période 5
   { number:37, symbol:"Rb", name:"Rubidium",      mass:85.468,  category:"alkali",          state:"solid",  period:5, group:1,  radioactive:false, metallic:true,  row:5,  col:1  },
-  { number:38, symbol:"Sr", name:"Strontium",     mass:87.62,   category:"alkaline-earth",  state:"solid",  period:5, group:2,  radioactive:false, metallic:true,  row:5,  col:2  },
+  { number:38, symbol:"Sr", name:"Strontium",     mass:87.620,  category:"alkaline-earth",  state:"solid",  period:5, group:2,  radioactive:false, metallic:true,  row:5,  col:2  },
   { number:39, symbol:"Y",  name:"Yttrium",       mass:88.906,  category:"transition",      state:"solid",  period:5, group:3,  radioactive:false, metallic:true,  row:5,  col:3  },
   { number:40, symbol:"Zr", name:"Zirconium",     mass:91.224,  category:"transition",      state:"solid",  period:5, group:4,  radioactive:false, metallic:true,  row:5,  col:4  },
   { number:41, symbol:"Nb", name:"Niobium",       mass:92.906,  category:"transition",      state:"solid",  period:5, group:5,  radioactive:false, metallic:true,  row:5,  col:5  },
-  { number:42, symbol:"Mo", name:"Molybdène",     mass:95.95,   category:"transition",      state:"solid",  period:5, group:6,  radioactive:false, metallic:true,  row:5,  col:6  },
-  { number:43, symbol:"Tc", name:"Technétium",    mass:98,      category:"transition",      state:"solid",  period:5, group:7,  radioactive:true,  metallic:true,  row:5,  col:7  },
+  { number:42, symbol:"Mo", name:"Molybdène",     mass:95.940,  category:"transition",      state:"solid",  period:5, group:6,  radioactive:false, metallic:true,  row:5,  col:6  },
+  { number:43, symbol:"Tc", name:"Technétium",    mass:98.0,    category:"transition",      state:"solid",  period:5, group:7,  radioactive:true,  metallic:true,  row:5,  col:7  },
   { number:44, symbol:"Ru", name:"Ruthénium",     mass:101.07,  category:"transition",      state:"solid",  period:5, group:8,  radioactive:false, metallic:true,  row:5,  col:8  },
-  { number:45, symbol:"Rh", name:"Rhodium",       mass:102.906, category:"transition",      state:"solid",  period:5, group:9,  radioactive:false, metallic:true,  row:5,  col:9  },
+  { number:45, symbol:"Rh", name:"Rhodium",       mass:102.91,  category:"transition",      state:"solid",  period:5, group:9,  radioactive:false, metallic:true,  row:5,  col:9  },
   { number:46, symbol:"Pd", name:"Palladium",     mass:106.42,  category:"transition",      state:"solid",  period:5, group:10, radioactive:false, metallic:true,  row:5,  col:10 },
-  { number:47, symbol:"Ag", name:"Argent",        mass:107.868, category:"transition",      state:"solid",  period:5, group:11, radioactive:false, metallic:true,  row:5,  col:11 },
-  { number:48, symbol:"Cd", name:"Cadmium",       mass:112.414, category:"transition",      state:"solid",  period:5, group:12, radioactive:false, metallic:true,  row:5,  col:12 },
-  { number:49, symbol:"In", name:"Indium",        mass:114.818, category:"post-transition", state:"solid",  period:5, group:13, radioactive:false, metallic:true,  row:5,  col:13 },
-  { number:50, symbol:"Sn", name:"Étain",         mass:118.711, category:"post-transition", state:"solid",  period:5, group:14, radioactive:false, metallic:true,  row:5,  col:14 },
-  { number:51, symbol:"Sb", name:"Antimoine",     mass:121.760, category:"metalloid",       state:"solid",  period:5, group:15, radioactive:false, metallic:false, row:5,  col:15 },
+  { number:47, symbol:"Ag", name:"Argent",        mass:107.87,  category:"transition",      state:"solid",  period:5, group:11, radioactive:false, metallic:true,  row:5,  col:11 },
+  { number:48, symbol:"Cd", name:"Cadmium",       mass:112.41,  category:"transition",      state:"solid",  period:5, group:12, radioactive:false, metallic:true,  row:5,  col:12 },
+  { number:49, symbol:"In", name:"Indium",        mass:114.82,  category:"post-transition", state:"solid",  period:5, group:13, radioactive:false, metallic:true,  row:5,  col:13 },
+  { number:50, symbol:"Sn", name:"Étain",         mass:118.71,  category:"post-transition", state:"solid",  period:5, group:14, radioactive:false, metallic:true,  row:5,  col:14 },
+  { number:51, symbol:"Sb", name:"Antimoine",     mass:121.76,  category:"metalloid",       state:"solid",  period:5, group:15, radioactive:false, metallic:false, row:5,  col:15 },
   { number:52, symbol:"Te", name:"Tellure",       mass:127.60,  category:"metalloid",       state:"solid",  period:5, group:16, radioactive:false, metallic:false, row:5,  col:16 },
-  { number:53, symbol:"I",  name:"Iode",          mass:126.904, category:"halogen",         state:"solid",  period:5, group:17, radioactive:false, metallic:false, row:5,  col:17 },
-  { number:54, symbol:"Xe", name:"Xénon",         mass:131.293, category:"noble",           state:"gas",    period:5, group:18, radioactive:false, metallic:false, row:5,  col:18 },
+  { number:53, symbol:"I",  name:"Iode",          mass:126.90,  category:"halogen",         state:"solid",  period:5, group:17, radioactive:false, metallic:false, row:5,  col:17 },
+  { number:54, symbol:"Xe", name:"Xénon",         mass:131.29,  category:"noble",           state:"gas",    period:5, group:18, radioactive:false, metallic:false, row:5,  col:18 },
+  
   // Période 6
-  { number:55, symbol:"Cs", name:"Césium",        mass:132.905, category:"alkali",          state:"solid",  period:6, group:1,  radioactive:false, metallic:true,  row:6,  col:1  },
-  { number:56, symbol:"Ba", name:"Baryum",        mass:137.327, category:"alkaline-earth",  state:"solid",  period:6, group:2,  radioactive:false, metallic:true,  row:6,  col:2  },
-  { number:57, symbol:"La", name:"Lanthane",      mass:138.905, category:"lanthanide",      state:"solid",  period:6, group:3,  radioactive:false, metallic:true,  row:8,  col:3  },
-  { number:58, symbol:"Ce", name:"Cérium",        mass:140.116, category:"lanthanide",      state:"solid",  period:6, group:4,  radioactive:false, metallic:true,  row:8,  col:4  },
-  { number:59, symbol:"Pr", name:"Praséodyme",    mass:140.908, category:"lanthanide",      state:"solid",  period:6, group:5,  radioactive:false, metallic:true,  row:8,  col:5  },
-  { number:60, symbol:"Nd", name:"Néodyme",       mass:144.242, category:"lanthanide",      state:"solid",  period:6, group:6,  radioactive:false, metallic:true,  row:8,  col:6  },
-  { number:61, symbol:"Pm", name:"Prométhium",    mass:145,     category:"lanthanide",      state:"solid",  period:6, group:7,  radioactive:true,  metallic:true,  row:8,  col:7  },
-  { number:62, symbol:"Sm", name:"Samarium",      mass:150.36,  category:"lanthanide",      state:"solid",  period:6, group:8,  radioactive:false, metallic:true,  row:8,  col:8  },
-  { number:63, symbol:"Eu", name:"Europium",      mass:151.964, category:"lanthanide",      state:"solid",  period:6, group:9,  radioactive:false, metallic:true,  row:8,  col:9  },
-  { number:64, symbol:"Gd", name:"Gadolinium",    mass:157.25,  category:"lanthanide",      state:"solid",  period:6, group:10, radioactive:false, metallic:true,  row:8,  col:10 },
-  { number:65, symbol:"Tb", name:"Terbium",       mass:158.925, category:"lanthanide",      state:"solid",  period:6, group:11, radioactive:false, metallic:true,  row:8,  col:11 },
-  { number:66, symbol:"Dy", name:"Dysprosium",    mass:162.500, category:"lanthanide",      state:"solid",  period:6, group:12, radioactive:false, metallic:true,  row:8,  col:12 },
-  { number:67, symbol:"Ho", name:"Holmium",       mass:164.930, category:"lanthanide",      state:"solid",  period:6, group:13, radioactive:false, metallic:true,  row:8,  col:13 },
-  { number:68, symbol:"Er", name:"Erbium",        mass:167.259, category:"lanthanide",      state:"solid",  period:6, group:14, radioactive:false, metallic:true,  row:8,  col:14 },
-  { number:69, symbol:"Tm", name:"Thulium",       mass:168.934, category:"lanthanide",      state:"solid",  period:6, group:15, radioactive:false, metallic:true,  row:8,  col:15 },
-  { number:70, symbol:"Yb", name:"Ytterbium",     mass:173.045, category:"lanthanide",      state:"solid",  period:6, group:16, radioactive:false, metallic:true,  row:8,  col:16 },
-  { number:71, symbol:"Lu", name:"Lutétium",      mass:174.967, category:"lanthanide",      state:"solid",  period:6, group:17, radioactive:false, metallic:true,  row:8,  col:17 },
-  { number:72, symbol:"Hf", name:"Hafnium",       mass:178.486, category:"transition",      state:"solid",  period:6, group:4,  radioactive:false, metallic:true,  row:6,  col:4  },
-  { number:73, symbol:"Ta", name:"Tantale",       mass:180.948, category:"transition",      state:"solid",  period:6, group:5,  radioactive:false, metallic:true,  row:6,  col:5  },
+  { number:55, symbol:"Cs", name:"Césium",        mass:132.91,  category:"alkali",          state:"solid",  period:6, group:1,  radioactive:false, metallic:true,  row:6,  col:1  },
+  { number:56, symbol:"Ba", name:"Baryum",        mass:137.33,  category:"alkaline-earth",  state:"solid",  period:6, group:2,  radioactive:false, metallic:true,  row:6,  col:2  },
+  { number:57, symbol:"La", name:"Lanthane",      mass:138.91,  category:"lanthanide",      state:"solid",  period:6, group:3,  radioactive:false, metallic:true,  row:6,  col:3  },
+  { number:58, symbol:"Ce", name:"Cérium",        mass:140.12,  category:"lanthanide",      state:"solid",  period:6, group:3,  radioactive:false, metallic:true,  row:6,  col:4  },
+  { number:59, symbol:"Pr", name:"Praséodyme",    mass:140.91,  category:"lanthanide",      state:"solid",  period:6, group:3,  radioactive:false, metallic:true,  row:6,  col:5  },
+  { number:60, symbol:"Nd", name:"Néodyme",       mass:144.24,  category:"lanthanide",      state:"solid",  period:6, group:3,  radioactive:false, metallic:true,  row:6,  col:6  },
+  { number:61, symbol:"Pm", name:"Prométhium",    mass:145.0,   category:"lanthanide",      state:"solid",  period:6, group:3,  radioactive:true,  metallic:true,  row:6,  col:7  },
+  { number:62, symbol:"Sm", name:"Samarium",      mass:150.36,  category:"lanthanide",      state:"solid",  period:6, group:3,  radioactive:false, metallic:true,  row:6,  col:8  },
+  { number:63, symbol:"Eu", name:"Europium",      mass:151.96,  category:"lanthanide",      state:"solid",  period:6, group:3,  radioactive:false, metallic:true,  row:6,  col:9  },
+  { number:64, symbol:"Gd", name:"Gadolinium",    mass:157.25,  category:"lanthanide",      state:"solid",  period:6, group:3,  radioactive:false, metallic:true,  row:6,  col:10 },
+  { number:65, symbol:"Tb", name:"Terbium",       mass:158.93,  category:"lanthanide",      state:"solid",  period:6, group:3,  radioactive:false, metallic:true,  row:6,  col:11 },
+  { number:66, symbol:"Dy", name:"Dysprosium",    mass:162.50,  category:"lanthanide",      state:"solid",  period:6, group:3,  radioactive:false, metallic:true,  row:6,  col:12 },
+  { number:67, symbol:"Ho", name:"Holmium",       mass:164.93,  category:"lanthanide",      state:"solid",  period:6, group:3,  radioactive:false, metallic:true,  row:6,  col:13 },
+  { number:68, symbol:"Er", name:"Erbium",        mass:167.26,  category:"lanthanide",      state:"solid",  period:6, group:3,  radioactive:false, metallic:true,  row:6,  col:14 },
+  { number:69, symbol:"Tm", name:"Thulium",       mass:168.93,  category:"lanthanide",      state:"solid",  period:6, group:3,  radioactive:false, metallic:true,  row:6,  col:15 },
+  { number:70, symbol:"Yb", name:"Ytterbium",     mass:173.04,  category:"lanthanide",      state:"solid",  period:6, group:3,  radioactive:false, metallic:true,  row:6,  col:16 },
+  { number:71, symbol:"Lu", name:"Lutécium",      mass:174.97,  category:"lanthanide",      state:"solid",  period:6, group:3,  radioactive:false, metallic:true,  row:6,  col:17 },
+  { number:72, symbol:"Hf", name:"Hafnium",       mass:178.49,  category:"transition",      state:"solid",  period:6, group:4,  radioactive:false, metallic:true,  row:6,  col:4  },
+  { number:73, symbol:"Ta", name:"Tantale",       mass:180.95,  category:"transition",      state:"solid",  period:6, group:5,  radioactive:false, metallic:true,  row:6,  col:5  },
   { number:74, symbol:"W",  name:"Tungstène",     mass:183.84,  category:"transition",      state:"solid",  period:6, group:6,  radioactive:false, metallic:true,  row:6,  col:6  },
-  { number:75, symbol:"Re", name:"Rhénium",       mass:186.207, category:"transition",      state:"solid",  period:6, group:7,  radioactive:false, metallic:true,  row:6,  col:7  },
+  { number:75, symbol:"Re", name:"Rhénium",       mass:186.21,  category:"transition",      state:"solid",  period:6, group:7,  radioactive:false, metallic:true,  row:6,  col:7  },
   { number:76, symbol:"Os", name:"Osmium",        mass:190.23,  category:"transition",      state:"solid",  period:6, group:8,  radioactive:false, metallic:true,  row:6,  col:8  },
-  { number:77, symbol:"Ir", name:"Iridium",       mass:192.217, category:"transition",      state:"solid",  period:6, group:9,  radioactive:false, metallic:true,  row:6,  col:9  },
-  { number:78, symbol:"Pt", name:"Platine",       mass:195.084, category:"transition",      state:"solid",  period:6, group:10, radioactive:false, metallic:true,  row:6,  col:10 },
-  { number:79, symbol:"Au", name:"Or",            mass:196.967, category:"transition",      state:"solid",  period:6, group:11, radioactive:false, metallic:true,  row:6,  col:11 },
-  { number:80, symbol:"Hg", name:"Mercure",       mass:200.592, category:"transition",      state:"liquid", period:6, group:12, radioactive:false, metallic:true,  row:6,  col:12 },
-  { number:81, symbol:"Tl", name:"Thallium",      mass:204.383, category:"post-transition", state:"solid",  period:6, group:13, radioactive:false, metallic:true,  row:6,  col:13 },
-  { number:82, symbol:"Pb", name:"Plomb",         mass:207.2,   category:"post-transition", state:"solid",  period:6, group:14, radioactive:false, metallic:true,  row:6,  col:14 },
-  { number:83, symbol:"Bi", name:"Bismuth",       mass:208.980, category:"post-transition", state:"solid",  period:6, group:15, radioactive:false, metallic:true,  row:6,  col:15 },
-  { number:84, symbol:"Po", name:"Polonium",      mass:209,     category:"post-transition", state:"solid",  period:6, group:16, radioactive:true,  metallic:true,  row:6,  col:16 },
-  { number:85, symbol:"At", name:"Astate",        mass:210,     category:"halogen",         state:"solid",  period:6, group:17, radioactive:true,  metallic:false, row:6,  col:17 },
-  { number:86, symbol:"Rn", name:"Radon",         mass:222,     category:"noble",           state:"gas",    period:6, group:18, radioactive:true,  metallic:false, row:6,  col:18 },
+  { number:77, symbol:"Ir", name:"Iridium",       mass:192.22,  category:"transition",      state:"solid",  period:6, group:9,  radioactive:false, metallic:true,  row:6,  col:9  },
+  { number:78, symbol:"Pt", name:"Platine",       mass:195.08,  category:"transition",      state:"solid",  period:6, group:10, radioactive:false, metallic:true,  row:6,  col:10 },
+  { number:79, symbol:"Au", name:"Or",            mass:196.97,  category:"transition",      state:"solid",  period:6, group:11, radioactive:false, metallic:true,  row:6,  col:11 },
+  { number:80, symbol:"Hg", name:"Mercure",       mass:200.59,  category:"transition",      state:"liquid", period:6, group:12, radioactive:false, metallic:true,  row:6,  col:12 },
+  { number:81, symbol:"Tl", name:"Thallium",      mass:204.38,  category:"post-transition", state:"solid",  period:6, group:13, radioactive:false, metallic:true,  row:6,  col:13 },
+  { number:82, symbol:"Pb", name:"Plomb",         mass:207.20,  category:"post-transition", state:"solid",  period:6, group:14, radioactive:false, metallic:true,  row:6,  col:14 },
+  { number:83, symbol:"Bi", name:"Bismuth",       mass:208.98,  category:"post-transition", state:"solid",  period:6, group:15, radioactive:false, metallic:true,  row:6,  col:15 },
+  { number:84, symbol:"Po", name:"Polonium",      mass:209.0,   category:"metalloid",       state:"solid",  period:6, group:16, radioactive:true,  metallic:false, row:6,  col:16 },
+  { number:85, symbol:"At", name:"Astate",        mass:210.0,   category:"halogen",         state:"solid",  period:6, group:17, radioactive:true,  metallic:false, row:6,  col:17 },
+  { number:86, symbol:"Rn", name:"Radon",         mass:222.0,   category:"noble",           state:"gas",    period:6, group:18, radioactive:true,  metallic:false, row:6,  col:18 },
+  
   // Période 7
-  { number:87, symbol:"Fr", name:"Francium",      mass:223,     category:"alkali",          state:"solid",  period:7, group:1,  radioactive:true,  metallic:true,  row:7,  col:1  },
-  { number:88, symbol:"Ra", name:"Radium",        mass:226,     category:"alkaline-earth",  state:"solid",  period:7, group:2,  radioactive:true,  metallic:true,  row:7,  col:2  },
-  { number:89, symbol:"Ac", name:"Actinium",      mass:227,     category:"actinide",        state:"solid",  period:7, group:3,  radioactive:true,  metallic:true,  row:9,  col:3  },
-  { number:90, symbol:"Th", name:"Thorium",       mass:232.038, category:"actinide",        state:"solid",  period:7, group:4,  radioactive:true,  metallic:true,  row:9,  col:4  },
-  { number:91, symbol:"Pa", name:"Protactinium",  mass:231.036, category:"actinide",        state:"solid",  period:7, group:5,  radioactive:true,  metallic:true,  row:9,  col:5  },
-  { number:92, symbol:"U",  name:"Uranium",       mass:238.029, category:"actinide",        state:"solid",  period:7, group:6,  radioactive:true,  metallic:true,  row:9,  col:6  },
-  { number:93, symbol:"Np", name:"Neptunium",     mass:237,     category:"actinide",        state:"solid",  period:7, group:7,  radioactive:true,  metallic:true,  row:9,  col:7  },
-  { number:94, symbol:"Pu", name:"Plutonium",     mass:244,     category:"actinide",        state:"solid",  period:7, group:8,  radioactive:true,  metallic:true,  row:9,  col:8  },
-  { number:95, symbol:"Am", name:"Américium",     mass:243,     category:"actinide",        state:"solid",  period:7, group:9,  radioactive:true,  metallic:true,  row:9,  col:9  },
-  { number:96, symbol:"Cm", name:"Curium",        mass:247,     category:"actinide",        state:"solid",  period:7, group:10, radioactive:true,  metallic:true,  row:9,  col:10 },
-  { number:97, symbol:"Bk", name:"Berkélium",     mass:247,     category:"actinide",        state:"solid",  period:7, group:11, radioactive:true,  metallic:true,  row:9,  col:11 },
-  { number:98, symbol:"Cf", name:"Californium",   mass:251,     category:"actinide",        state:"solid",  period:7, group:12, radioactive:true,  metallic:true,  row:9,  col:12 },
-  { number:99, symbol:"Es", name:"Einsteinium",   mass:252,     category:"actinide",        state:"solid",  period:7, group:13, radioactive:true,  metallic:true,  row:9,  col:13 },
-  { number:100,symbol:"Fm", name:"Fermium",       mass:257,     category:"actinide",        state:"solid",  period:7, group:14, radioactive:true,  metallic:true,  row:9,  col:14 },
-  { number:101,symbol:"Md", name:"Mendélévium",   mass:258,     category:"actinide",        state:"solid",  period:7, group:15, radioactive:true,  metallic:true,  row:9,  col:15 },
-  { number:102,symbol:"No", name:"Nobélium",      mass:259,     category:"actinide",        state:"solid",  period:7, group:16, radioactive:true,  metallic:true,  row:9,  col:16 },
-  { number:103,symbol:"Lr", name:"Lawrencium",    mass:266,     category:"actinide",        state:"solid",  period:7, group:17, radioactive:true,  metallic:true,  row:9,  col:17 },
-  { number:104,symbol:"Rf", name:"Rutherfordium", mass:267,     category:"transition",      state:"solid",  period:7, group:4,  radioactive:true,  metallic:true,  row:7,  col:4  },
-  { number:105,symbol:"Db", name:"Dubnium",       mass:268,     category:"transition",      state:"solid",  period:7, group:5,  radioactive:true,  metallic:true,  row:7,  col:5  },
-  { number:106,symbol:"Sg", name:"Seaborgium",    mass:269,     category:"transition",      state:"solid",  period:7, group:6,  radioactive:true,  metallic:true,  row:7,  col:6  },
-  { number:107,symbol:"Bh", name:"Bohrium",       mass:270,     category:"transition",      state:"solid",  period:7, group:7,  radioactive:true,  metallic:true,  row:7,  col:7  },
-  { number:108,symbol:"Hs", name:"Hassium",       mass:277,     category:"transition",      state:"solid",  period:7, group:8,  radioactive:true,  metallic:true,  row:7,  col:8  },
-  { number:109,symbol:"Mt", name:"Meitnérium",    mass:278,     category:"transition",      state:"solid",  period:7, group:9,  radioactive:true,  metallic:true,  row:7,  col:9  },
-  { number:110,symbol:"Ds", name:"Darmstadtium",  mass:281,     category:"transition",      state:"solid",  period:7, group:10, radioactive:true,  metallic:true,  row:7,  col:10 },
-  { number:111,symbol:"Rg", name:"Roentgenium",   mass:282,     category:"transition",      state:"solid",  period:7, group:11, radioactive:true,  metallic:true,  row:7,  col:11 },
-  { number:112,symbol:"Cn", name:"Copernicium",   mass:285,     category:"transition",      state:"gas",    period:7, group:12, radioactive:true,  metallic:true,  row:7,  col:12 },
-  { number:113,symbol:"Nh", name:"Nihonium",      mass:286,     category:"post-transition", state:"solid",  period:7, group:13, radioactive:true,  metallic:true,  row:7,  col:13 },
-  { number:114,symbol:"Fl", name:"Flérovium",     mass:289,     category:"post-transition", state:"solid",  period:7, group:14, radioactive:true,  metallic:true,  row:7,  col:14 },
-  { number:115,symbol:"Mc", name:"Moscovium",     mass:290,     category:"post-transition", state:"solid",  period:7, group:15, radioactive:true,  metallic:true,  row:7,  col:15 },
-  { number:116,symbol:"Lv", name:"Livermorium",   mass:293,     category:"post-transition", state:"solid",  period:7, group:16, radioactive:true,  metallic:true,  row:7,  col:16 },
-  { number:117,symbol:"Ts", name:"Tennesse",      mass:294,     category:"halogen",         state:"solid",  period:7, group:17, radioactive:true,  metallic:false, row:7,  col:17 },
-  { number:118,symbol:"Og", name:"Oganesson",     mass:294,     category:"noble",           state:"gas",    period:7, group:18, radioactive:true,  metallic:false, row:7,  col:18 },
+  { number:87, symbol:"Fr", name:"Francium",      mass:223.0,   category:"alkali",          state:"solid",  period:7, group:1,  radioactive:true,  metallic:true,  row:7,  col:1  },
+  { number:88, symbol:"Ra", name:"Radium",        mass:226.0,   category:"alkaline-earth",  state:"solid",  period:7, group:2,  radioactive:true,  metallic:true,  row:7,  col:2  },
+  { number:89, symbol:"Ac", name:"Actinium",      mass:227.0,   category:"actinide",        state:"solid",  period:7, group:3,  radioactive:true,  metallic:true,  row:7,  col:3  },
+  { number:90, symbol:"Th", name:"Thorium",       mass:232.04,  category:"actinide",        state:"solid",  period:7, group:3,  radioactive:true,  metallic:true,  row:7,  col:4  },
+  { number:91, symbol:"Pa", name:"Protactinium",  mass:231.04,  category:"actinide",        state:"solid",  period:7, group:3,  radioactive:true,  metallic:true,  row:7,  col:5  },
+  { number:92, symbol:"U",  name:"Uranium",       mass:238.03,  category:"actinide",        state:"solid",  period:7, group:3,  radioactive:true,  metallic:true,  row:7,  col:6  },
+  { number:93, symbol:"Np", name:"Neptunium",     mass:237.0,   category:"actinide",        state:"solid",  period:7, group:3,  radioactive:true,  metallic:true,  row:7,  col:7  },
+  { number:94, symbol:"Pu", name:"Plutonium",     mass:244.0,   category:"actinide",        state:"solid",  period:7, group:3,  radioactive:true,  metallic:true,  row:7,  col:8  },
+  { number:95, symbol:"Am", name:"Americium",     mass:243.0,   category:"actinide",        state:"solid",  period:7, group:3,  radioactive:true,  metallic:true,  row:7,  col:9  },
+  { number:96, symbol:"Cm", name:"Curium",        mass:247.0,   category:"actinide",        state:"solid",  period:7, group:3,  radioactive:true,  metallic:true,  row:7,  col:10 },
+  { number:97, symbol:"Bk", name:"Berkélium",     mass:247.0,   category:"actinide",        state:"solid",  period:7, group:3,  radioactive:true,  metallic:true,  row:7,  col:11 },
+  { number:98, symbol:"Cf", name:"Californium",   mass:251.0,   category:"actinide",        state:"solid",  period:7, group:3,  radioactive:true,  metallic:true,  row:7,  col:12 },
+  { number:99, symbol:"Es", name:"Einsteinium",   mass:252.0,   category:"actinide",        state:"solid",  period:7, group:3,  radioactive:true,  metallic:true,  row:7,  col:13 },
+  { number:100,symbol:"Fm", name:"Fermium",       mass:257.0,   category:"actinide",        state:"solid",  period:7, group:3,  radioactive:true,  metallic:true,  row:7,  col:14 },
+  { number:101,symbol:"Md", name:"Mendélévium",   mass:258.0,   category:"actinide",        state:"solid",  period:7, group:3,  radioactive:true,  metallic:true,  row:7,  col:15 },
+  { number:102,symbol:"No", name:"Nobélium",      mass:259.0,   category:"actinide",        state:"solid",  period:7, group:3,  radioactive:true,  metallic:true,  row:7,  col:16 },
+  { number:103,symbol:"Lr", name:"Lawrencium",    mass:262.0,   category:"actinide",        state:"solid",  period:7, group:3,  radioactive:true,  metallic:true,  row:7,  col:17 },
+  { number:104,symbol:"Rf", name:"Rutherfordium", mass:267.0,   category:"transition",      state:"solid",  period:7, group:4,  radioactive:true,  metallic:true,  row:7,  col:4  },
+  { number:105,symbol:"Db", name:"Dubnium",       mass:270.0,   category:"transition",      state:"solid",  period:7, group:5,  radioactive:true,  metallic:true,  row:7,  col:5  },
+  { number:106,symbol:"Sg", name:"Seaborgium",    mass:271.0,   category:"transition",      state:"solid",  period:7, group:6,  radioactive:true,  metallic:true,  row:7,  col:6  },
+  { number:107,symbol:"Bh", name:"Bohrium",       mass:272.0,   category:"transition",      state:"solid",  period:7, group:7,  radioactive:true,  metallic:true,  row:7,  col:7  },
+  { number:108,symbol:"Hs", name:"Hassium",       mass:270.0,   category:"transition",      state:"solid",  period:7, group:8,  radioactive:true,  metallic:true,  row:7,  col:8  },
+  { number:109,symbol:"Mt", name:"Meitnerium",    mass:278.0,   category:"transition",      state:"solid",  period:7, group:9,  radioactive:true,  metallic:true,  row:7,  col:9  },
+  { number:110,symbol:"Ds", name:"Darmstadium",   mass:281.0,   category:"transition",      state:"solid",  period:7, group:10, radioactive:true,  metallic:true,  row:7,  col:10 },
+  { number:111,symbol:"Rg", name:"Roentgenium",   mass:280.0,   category:"transition",      state:"solid",  period:7, group:11, radioactive:true,  metallic:true,  row:7,  col:11 },
+  { number:112,symbol:"Cn", name:"Copernicium",   mass:285.0,   category:"transition",      state:"solid",  period:7, group:12, radioactive:true,  metallic:true,  row:7,  col:12 },
+  { number:113,symbol:"Nh", name:"Nihonium",      mass:286.0,   category:"post-transition", state:"solid",  period:7, group:13, radioactive:true,  metallic:true,  row:7,  col:13 },
+  { number:114,symbol:"Fl", name:"Flérovium",     mass:289.0,   category:"post-transition", state:"solid",  period:7, group:14, radioactive:true,  metallic:true,  row:7,  col:14 },
+  { number:115,symbol:"Mc", name:"Moscovium",     mass:290.0,   category:"post-transition", state:"solid",  period:7, group:15, radioactive:true,  metallic:true,  row:7,  col:15 },
+  { number:116,symbol:"Lv", name:"Livermorium",   mass:293.0,   category:"post-transition", state:"solid",  period:7, group:16, radioactive:true,  metallic:true,  row:7,  col:16 },
+  { number:117,symbol:"Ts", name:"Tennesse",      mass:294.0,   category:"halogen",         state:"solid",  period:7, group:17, radioactive:true,  metallic:false, row:7,  col:17 },
+  { number:118,symbol:"Og", name:"Oganesson",     mass:294.0,   category:"noble",           state:"gas",    period:7, group:18, radioactive:true,  metallic:false, row:7,  col:18 },
 ];
 
 // ─── QUESTIONS RAPIDES PRÉDÉFINIES ───────────────────────────
@@ -172,6 +178,10 @@ const QUICK_QUESTIONS = [
   { text: "Est-il dans le groupe 18 ?",         key: "group_18" },
   { text: "A-t-il un symbole d'une lettre ?",   key: "one_letter" },
 ];
+
+// =============================================================
+// ÉVALUATION DES QUESTIONS
+// =============================================================
 
 /**
  * Évalue automatiquement une question rapide sur un élément
@@ -205,11 +215,132 @@ function evaluateQuestion(key, element) {
   }
 }
 
+// =============================================================
+// UTILITAIRES DE RECHERCHE
+// =============================================================
+
 /**
  * Retourne un élément par son numéro atomique
  */
 function getElementById(number) {
   return ELEMENTS.find(e => e.number === number) || null;
+}
+
+/**
+ * Retourne un élément par son symbole
+ */
+function getElementBySymbol(symbol) {
+  return ELEMENTS.find(e => e.symbol === symbol) || null;
+}
+
+/**
+ * Retourne un élément par son nom
+ */
+function getElementByName(name) {
+  return ELEMENTS.find(e => e.name.toLowerCase() === name.toLowerCase()) || null;
+}
+
+/**
+ * Retourne un élément aléatoire
+ */
+function getRandomElement() {
+  return ELEMENTS[Math.floor(Math.random() * ELEMENTS.length)];
+}
+
+// =============================================================
+// FILTRAGE ET SÉLECTION
+// =============================================================
+
+/**
+ * Filtre les éléments par catégorie
+ * @param {string} category - catégorie (ex: "alkali", "noble")
+ * @returns {Array} - liste des éléments de cette catégorie
+ */
+function filterByCategory(category) {
+  return ELEMENTS.filter(e => e.category === category);
+}
+
+/**
+ * Filtre les éléments par état physique
+ * @param {string} state - "solid", "liquid", "gas"
+ * @returns {Array}
+ */
+function filterByState(state) {
+  return ELEMENTS.filter(e => e.state === state);
+}
+
+/**
+ * Retourne les éléments radioactifs
+ */
+function getRadioactiveElements() {
+  return ELEMENTS.filter(e => e.radioactive === true);
+}
+
+/**
+ * Retourne les éléments métalliques
+ */
+function getMetallicElements() {
+  return ELEMENTS.filter(e => e.metallic === true);
+}
+
+/**
+ * Compte les éléments qui correspondent à un critère de question
+ * @param {string} questionKey - clé de la question rapide
+ * @returns {number}
+ */
+function countMatchingElements(questionKey) {
+  return ELEMENTS.filter(e => evaluateQuestion(questionKey, e) === true).length;
+}
+
+// =============================================================
+// RENDU HTML
+// =============================================================
+
+/**
+ * Génère un HTML pour afficher la grille complète du tableau périodique
+ * @param {function} onElementClick - callback quand on clique sur un élément
+ */
+function renderPeriodicTable(onElementClick) {
+  const table = document.createElement('div');
+  table.className = 'periodic-table-grid';
+  
+  ELEMENTS.forEach(element => {
+    const color = CATEGORY_COLORS[element.category] || { bg: "#555", text: "#fff" };
+    const tile = document.createElement('button');
+    tile.className = 'periodic-tile';
+    tile.style.gridRow = element.row;
+    tile.style.gridColumn = element.col;
+    tile.style.backgroundColor = color.bg;
+    tile.style.color = color.text;
+    tile.innerHTML = `
+      <span class="tile-number">${element.number}</span>
+      <span class="tile-symbol">${element.symbol}</span>
+    `;
+    tile.addEventListener('click', () => onElementClick(element));
+    table.appendChild(tile);
+  });
+  
+  return table;
+}
+
+/**
+ * Crée un HTML pour afficher les légendes des catégories
+ */
+function renderCategoryLegend() {
+  const legend = document.createElement('div');
+  legend.className = 'category-legend';
+  
+  Object.entries(CATEGORY_COLORS).forEach(([key, color]) => {
+    const item = document.createElement('div');
+    item.className = 'legend-item';
+    item.innerHTML = `
+      <span class="legend-color" style="background:${color.bg}"></span>
+      <span class="legend-label">${color.label}</span>
+    `;
+    legend.appendChild(item);
+  });
+  
+  return legend;
 }
 
 /**
@@ -226,4 +357,37 @@ function renderElementBadge(element, size = "normal") {
       <span class="tile-mass">${parseFloat(element.mass).toFixed(1)}</span>
     </div>
   `;
+}
+
+/**
+ * Retourne les informations détaillées d'un élément en texte
+ */
+function getElementInfo(element) {
+  if (!element) return "Élément inconnu";
+  const category = CATEGORY_COLORS[element.category];
+  return `
+    <strong>${element.name}</strong> (${element.symbol})
+    <br/>Numéro : ${element.number}
+    <br/>Masse : ${parseFloat(element.mass).toFixed(3)} u
+    <br/>État : ${element.state === 'solid' ? '⬛ Solide' : element.state === 'liquid' ? '💧 Liquide' : '☁️ Gaz'}
+    <br/>Catégorie : ${category ? category.label : 'Inconnue'}
+    <br/>Période : ${element.period} | Groupe : ${element.group}
+    ${element.radioactive ? '<br/>⚛️ Radioactif' : ''}
+  `;
+}
+
+// =============================================================
+// DEBUG
+// =============================================================
+
+/**
+ * Exporte les données pour debug (console)
+ */
+function debugElements() {
+  console.table(ELEMENTS.slice(0, 10)); // Affiche les 10 premiers éléments
+  console.log(`Total d'éléments : ${ELEMENTS.length}`);
+  console.log(`Métalliques : ${getMetallicElements().length}`);
+  console.log(`Radioactifs : ${getRadioactiveElements().length}`);
+  console.log(`Gazeux : ${filterByState('gas').length}`);
+  console.log('✅ Debug complet');
 }
