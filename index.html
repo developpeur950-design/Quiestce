@@ -223,21 +223,30 @@
   <!-- ===================== OVERLAY NOTIFICATION ===================== -->
   <div id="notification" class="notification hidden"></div>
 
-  <!-- ===================== SCRIPTS ===================== -->
-    <!-- ===================== SCRIPTS ===================== -->
+  <!-- ===================== SCRIPTS ===================== -->  <!-- ===================== SCRIPTS ===================== -->
   <!-- Firebase SDK + Database (version compat) -->
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
 
-  <!-- Données + Logique -->
-  <script src="elements.js"></script>
+  <!-- Configuration Firebase AVANT game.js -->
   <script src="firebase-config.js"></script>
+
+  <!-- Données -->
+  <script src="elements.js"></script>
+
+  <!-- Logique du jeu (APRÈS Firebase) -->
   <script src="game.js"></script>
 
-  <!-- Attendre que Firebase soit prêt -->
+  <!-- Initialisation avec délai -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      console.log('Firebase chargé et prêt');
+      setTimeout(() => {
+        if (typeof db !== 'undefined') {
+          console.log('✅ Tous les scripts chargés avec succès !');
+        } else {
+          console.error('❌ Firebase n\'est pas disponible');
+        }
+      }, 500);
     });
   </script>
 
